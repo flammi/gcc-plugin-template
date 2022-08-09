@@ -21,3 +21,6 @@ dummy_plugin.o : dummy_plugin.cc
 
 dummy_plugin.so: dummy_plugin.o
 	$(CXX) $(LDFLAGS) -shared -o $@ $<
+
+test: test.c dummy_plugin.cc
+	gcc -fplugin=./dummy_plugin.so -o test test.c
